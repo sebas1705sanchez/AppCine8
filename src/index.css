@@ -7,14 +7,17 @@
   --color-text-2: #B9B7B7; 
 */
 
-header{
-  background-color: rgba(0, 0, 0, 0.48);
-}
-
-body{
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   background-color: var(--color-background);
 }
 
+
+header{
+  background-color: rgba(0, 0, 0, 0.48);
+}
 
 a {
   font-weight: 500;
