@@ -47,7 +47,8 @@ const TrendingTVPreview = () => {
         ))}
 
       </div>
-        const [tvShows1, setTvShows1] = useState([]); <div className="trendingPreview-movieList">
+        const [tvShows1, setTvShows1] = useState([]); 
+      <div className="trendingPreview-movieList">
         {tvShows2.map((tvShow) => (
           <div key={tvShow.id} className="movie-container">
             <img
@@ -59,10 +60,7 @@ const TrendingTVPreview = () => {
             <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
           </div>
         ))}
-
       </div>
-     
-
     </div>
   );
 
