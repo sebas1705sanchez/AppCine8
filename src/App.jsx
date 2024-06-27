@@ -12,7 +12,7 @@ function App() {
     <div className="className">
       <header>
         <h1>Peliculas</h1>
-      </header>s
+      </header>
       <main>
         <TrendingMoviesPreview 
         start = {2}
@@ -26,24 +26,3 @@ function App() {
 }
 
 export default App
-
-
-/*
-
- const [indexInicial, setIndixInicial] = useState()
-
-  const siguienteTestimonio = () => {
-    setIndixInicial((prevIndice) => (prevIndice + 1) % TrendingMoviesPreview);
-    console.log("siguiente")
-  };
-
-  const anteriorTestimonio = () => {
-    setIndixInicial((prevIndice) => (prevIndice - 1 + testimonios.length) % testimonios.length);
-    console.log("atras")
-};
-          
-        <button onClick={anteriorTestimonio}>Anterior</button>
-        <button onClick={siguienteTestimonio}>Siguiente</button>
-  
-
-*/
