@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../style/movie.css'; // Asegúrate de importar el archivo CSS
+import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
 
 const API_KEY = 'c84b15de02b182bd760ca972c743c53f'; // Recuerda reemplazar 'tu_api_key' con tu clave de API de TMDb
 
@@ -26,17 +26,19 @@ const TrendingPeoplePreview = () => {
 
   return (
     <div id="trendingPeoplePreview">
-      <h2 >Trending People Today</h2>
-      <div className="trendingPreview-movieList">
-        {people.map((person) => (
-          <div key={person.id} className="movie-container">
-            <img
-              className="movie-img"
-              src={`https://image.tmdb.org/t/p/w300${person.profile_path}`}
-              alt={person.name}
-            />
-          </div>
-        ))}
+      <div className="trendingPreview-container">
+        <h2 >Trending People Today</h2>
+        <div className="trendingPreview-movieList">
+          {people.map((person) => (
+            <div key={person.id} className="persson-container">
+              <img
+                className="persson-img"
+                src={`https://image.tmdb.org/t/p/w300${person.profile_path}`}
+                alt={person.name}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

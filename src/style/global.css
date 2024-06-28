@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-
   /* Definición global de los colores */
   --color-titulo : #5FD3ED;
   --color-background: #252634;
@@ -12,7 +11,19 @@
   --color-text-2: #B9B7B7;
 
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/*   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 } 
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+#root {
+  height: 100%;
+}

@@ -1,5 +1,4 @@
-/* App.css */
-@import url('./style/variable.css');
+@import url('./style/global.css');
 /*  Para llamar un color solo se pone por ejemplo  background-color: var(--color-fondo);
   --color-titulo : #5FD3ED;
   --color-background: #252634;
@@ -7,7 +6,6 @@
   --color-text: #FFFFFF;
   --color-text-2: #B9B7B7; 
 */
-
 
 .App {
   font-family: Arial, sans-serif;
@@ -27,14 +25,6 @@ header {
 header h1 {
   margin: 0;
   color:#5FD3ED;
-  background-color: hsla(0, 0%, 0%, 0.5);
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 main {
