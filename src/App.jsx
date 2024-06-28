@@ -1,28 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import TrendingMoviesPreview from './components/TrendingMoviesPreview '
-import TrendingTVPreview from './components/TrendingTVPreview '
-import TrendingPeoplePreview from './components/TrendingPeoplePreview '
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import SearchComponent from './components/SearchComponent';
+import DetailsId from './components/details';
+import Home from './components/Home';
+
+
+import Details from './pages/Filter';
+import { StateContext } from './context/stateContext';
+
+//import {
+//  createBrowserHistory,
+//} from 'history';
+
+import './App.css';
 
 function App() {
-
   return (
-    <div className="className">
-      <header>
-        <h1>Peliculas</h1>
-      </header>
-      <main>
-        <TrendingMoviesPreview 
-        start = {2}
-        end = {5}/>
-  
-        <TrendingTVPreview />
-        <TrendingPeoplePreview />
-      </main>
-    </div>
-  )
+    <StateContext>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Details />} />
+          <Route path="/id" element={<DetailsId />} />
+        </Routes>
+    </StateContext>
+  );
 }
 
 export default App
