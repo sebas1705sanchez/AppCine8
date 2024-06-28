@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../style/tvShow.css'; // Asegúrate de importar el archivo CSS
+import '../style/sectionCard.css';  // Asegúrate de importar el archivo CSS
 
 const API_KEY = 'c84b15de02b182bd760ca972c743c53f'; // Recuerda reemplazar 'tu_api_key' con tu clave de API de TMDb
 
@@ -32,37 +32,36 @@ const TrendingTVPreview = () => {
 
   return (
     <div id="trendingTvPreview">
-      <h2>Trending TV Shows Today</h2>
-      <div className="trendingPreview-movieList">
-        {tvShows1.map((tvShow) => (
-          <div key={tvShow.id} className="movie-container">
-            <img
-              className="movie-img"
-              src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
-              alt={tvShow.name}
-            />
-            <p>{tvShow.name}</p>{/* Nombre de la pelicula */}
-            <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
-          </div>
-        ))}
+      <div className="trendingPreview-container">
+        <h2>Trending TV Shows Today</h2>
+        <div className="trendingPreview-movieList">
+          {tvShows1.map((tvShow) => (
+            <div key={tvShow.id} className="movie-container">
+              <img
+                className="movie-img"
+                src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
+                alt={tvShow.name}
+              />
+              <p>{tvShow.name}</p>{/* Nombre de la pelicula */}
+              <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
+            </div>
+          ))}
+        </div>
 
-      </div>
-        const [tvShows1, setTvShows1] = useState([]); <div className="trendingPreview-movieList">
-        {tvShows2.map((tvShow) => (
-          <div key={tvShow.id} className="movie-container">
-            <img
-              className="movie-img"
-              src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
-              alt={tvShow.name}
-            />
-            <p>{tvShow.name}</p>{/* Nombre de la pelicula */}
-            <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
-          </div>
-        ))}
-
-      </div>
-     
-
+        <div className="trendingPreview-movieList">
+          {tvShows2.map((tvShow) => (
+            <div key={tvShow.id} className="movie-container">
+              <img
+                className="movie-img"
+                src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
+                alt={tvShow.name}
+              />
+              <p>{tvShow.name}</p>{/* Nombre de la pelicula */}
+              <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
+            </div>
+          ))}
+        </div>
+      </div>    
     </div>
   );
 

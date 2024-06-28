@@ -1,4 +1,4 @@
-@import url('./style/variable.css');
+@import url('./style/global.css');
 /*  Para llamar un color solo se pone por ejemplo  background-color: var(--color-fondo);
   --color-titulo : #5FD3ED;
   --color-background: #252634;
@@ -11,7 +11,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--color-background);
 }
 
 
@@ -32,9 +31,24 @@ a:hover {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
-  color: #646cff;
+  color: var(--color-titulo);
 }
 
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+
+
+
+/* ---------------------------------------------- */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
