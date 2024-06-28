@@ -1,4 +1,4 @@
-@import url('../style/variable.css');
+@import url('../style/global.css');
 /*  Para llamar un color solo se pone por ejemplo  background-color: var(--color-fondo);
   --color-titulo : #5FD3ED;
   --color-background: #252634;
