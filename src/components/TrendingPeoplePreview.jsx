@@ -12,23 +12,30 @@ const TrendingPeoplePreview = () => {
   const { searchType, setSearchType  } = useStateContext();
   const { query, setQuery } = useStateContext();
   const { id, setId } = useStateContext();
+  const [index, setIndex] = useState(0);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchPeople = async () => {
       try {
-        const res = await axios.get(`https://api.themoviedb.org/3/trending/person/day?api_key=${API_KEY}`);
-        //console.log(res.data.results.slice(0, 5))
-        setPeople(res.data.results.slice(0, 5)); // Limitar el número de personas a 5
+        const res = await axios.get(`https://api.themoviedb.org/3/trending/person/day?api_key=${API_KEY}&page=${page}`);
+        setPeople(res.data.results.slice(index, index+5)); // Limitar el número de personas a 5
       } catch (error) {
         console.error('Error fetching trending people:', error);
       }
     };
 
     fetchPeople();
-  }, []);
+  }, [index, page]);
 
-  console.log("people")
-  console.log(people)
+  const changePage = () => {
+    console.log("page: ", page, "index: ", index)
+    if (index === 15) {
+      setPage(page + 1);
+    }else{
+      setIndex(index + 5);
+    }
+  };
 
   return (
     <div id="trendingPeoplePreview">
@@ -47,6 +54,7 @@ const TrendingPeoplePreview = () => {
           ))}
         </div>
       </div>
+      <button className="" onClick={changePage}>next</button>
     </div>
   );
 };
