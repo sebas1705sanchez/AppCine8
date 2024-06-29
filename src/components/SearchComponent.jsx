@@ -24,7 +24,7 @@ const SearchComponent = () => {
         fetchSearchResults(searchType, query)
           .then(data => {
             setResults(data.results.slice(0, 5)); // Limitamos a 5 resultados para el dropdown
-            setShowDropdown(true);
+            
           })
           .catch(error => console.error('Error fetching results:', error));
       } else {
@@ -75,7 +75,7 @@ const SearchComponent = () => {
           <input className='input-search'
             type="text" 
             value={query} 
-            onChange={(e) => setQuery(e.target.value)} 
+            onChange={(e) => (setQuery(e.target.value), setShowDropdown(true))} 
             placeholder="Buscar..."
           />
           <button className='submit-button' type="submit">Buscar</button>
