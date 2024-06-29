@@ -16,26 +16,33 @@ const TrendingTVPreview = () => {
   const { searchType, setSearchType  } = useStateContext();
   const { query, setQuery } = useStateContext();
   const { id, setId } = useStateContext();
+  const [index, setIndex] = useState(0);
+  const [page, setPage] = useState(1);
 
   useEffect(() => { /* Debe recibir el código para ejecutar y la lista de dependencias   //como minimo se ejecuta una vez*/
 
     console.log
     const fetchTvShows = async () => {
       try {
-        const res = await axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}`);
-        setTvShows1(res.data.results.slice(0,5));
-        setTvShows2(res.data.results.slice(6,11)); // Limitar el número de programas de TV a 5
+        const res = await axios.get(`https://api.themoviedb.org/3/trending/tv/day?api_key=${API_KEY}&page=${page}`);
+        setTvShows1(res.data.results.slice(index,index+5));
+        setTvShows2(res.data.results.slice(index+5,index+10)); // Limitar el número de programas de TV a 5
       } catch (error) {
         console.error('Error fetching trending TV shows:', error);
       }
     };
 
     fetchTvShows();
-  }, []); /* Este array se pasa de forma opcional, si no se le pasa el código dentro de useEffect se va a ejecutar cada que se renderice el componente*/
+  }, [index, page]); /* Este array se pasa de forma opcional, si no se le pasa el código dentro de useEffect se va a ejecutar cada que se renderice el componente*/
 
-  console.log("tvShows")
-/*   console.log(tvShows) */
-
+  const changePage = () => {
+    console.log("page: ", page, "index: ", index)
+    if (index === 0) {
+      setIndex(index + 10);
+    }else{
+      setPage(page + 1);
+    }
+  };
 
   return (
     <div id="trendingTvPreview">
@@ -71,6 +78,7 @@ const TrendingTVPreview = () => {
           ))}
         </div>
       </div>    
+      <button className="" onClick={changePage}>next</button>
     </div>
   );
 

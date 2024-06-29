@@ -12,6 +12,9 @@ const TrendingMoviesPreview = (props) => {
   const [movies1, setMovies1] = useState([]);
   const [movies2, setMovies2] = useState([]);
 
+  const [index, setIndex] = useState(0);
+  const [page, setPage] = useState(1);
+
   const { searchType, setSearchType  } = useStateContext();
   const { query, setQuery } = useStateContext();
   const { id, setId } = useStateContext();
@@ -20,9 +23,9 @@ const TrendingMoviesPreview = (props) => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const res = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-        setMovies1(res.data.results.slice(0, 5)); 
-        setMovies2(res.data.results.slice(6, 11));// Limitar el número de películas a 5  // AQUI DECIA (props.start, props.end) EN VEZ DE (0, 8)
+        const res = await axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}&page=${page}`);
+        setMovies1(res.data.results.slice(index, index+5)); 
+        setMovies2(res.data.results.slice(index+5, index+10));// Limitar el número de películas a 5  // AQUI DECIA (props.start, props.end) EN VEZ DE (0, 8)
         //console.log(res.data.results.slice(0, 5))
       } catch (error) {
         console.error('Error fetching trending movies:', error);
@@ -30,9 +33,15 @@ const TrendingMoviesPreview = (props) => {
     };
 
     fetchMovies();
-  }, [])
+  }, [index, page])
 
-  console.log("movies")
+  const changePage = () => {
+    if (index === 0) {
+      setIndex(index + 10);
+    }else{
+      setPage(page + 1);
+    }
+  };
 
   return (
     <div id="trendingPreview">
@@ -68,6 +77,7 @@ const TrendingMoviesPreview = (props) => {
             ))}
           </div>
       </div>
+      <button className="" onClick={changePage}>next</button>
     </div>
   );
 };
