@@ -12,9 +12,6 @@ function Home() {
       <nav>        
         <SearchComponent/>
       </nav>
-      <header>
-        <h1>Peliculas</h1>
-      </header>
       <main>
         <TrendingMoviesPreview 
         start = {2}

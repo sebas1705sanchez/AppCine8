@@ -32,6 +32,7 @@ const TrendingPeoplePreview = () => {
     console.log("page: ", page, "index: ", index)
     if (index === 15) {
       setPage(page + 1);
+      setIndex(0);
     }else{
       setIndex(index + 5);
     }

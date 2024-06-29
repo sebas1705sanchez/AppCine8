@@ -35,11 +35,24 @@ const TrendingMoviesPreview = (props) => {
     fetchMovies();
   }, [index, page])
 
-  const changePage = () => {
+  const nextPage = () => {
     if (index === 0) {
       setIndex(index + 10);
     }else{
       setPage(page + 1);
+      setIndex(0);
+    }
+  };
+
+  const previousPage = () => {
+    if (page === 1 && index === 0) {
+      return;
+    }
+    else if (index === 10) {
+      setIndex(index - 10);
+    }else{
+      setPage(page - 1);
+      setIndex(10);
     }
   };
 
@@ -77,7 +90,9 @@ const TrendingMoviesPreview = (props) => {
             ))}
           </div>
       </div>
-      <button className="" onClick={changePage}>next</button>
+      <button className="" onClick={nextPage}>next</button>
+      <button className="" onClick={previousPage}>previous</button>
+
     </div>
   );
 };

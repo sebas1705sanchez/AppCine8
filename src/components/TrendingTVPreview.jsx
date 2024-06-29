@@ -41,6 +41,7 @@ const TrendingTVPreview = () => {
       setIndex(index + 10);
     }else{
       setPage(page + 1);
+      setIndex(0);
     }
   };
 

@@ -6,11 +6,10 @@ import '../styles/Search.css'
 
 const SearchComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
+  // const location = useLocation();
 
-  // const [searchType, setSearchType] = useState(searchParams.get('type') || 'movie');
-  // const [query, setQuery] = useState(searchParams.get('query') || '');
+  // const searchParams = new URLSearchParams(location.search);
+
   const { searchType, setSearchType  } = useStateContext();
   const { query, setQuery } = useStateContext();
   const { id, setId } = useStateContext();
@@ -38,13 +37,10 @@ const SearchComponent = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    //if (query.trim() === '') return;
-    // const params = new URLSearchParams();
-    // params.append('type', searchType);
-    // params.append('query', query);
+    if (query.trim() === '') return;
+
 
     setShowDropdown(false);
-    // navigate('/search');
     navigate(`/search/${query}`);
 
 
@@ -53,11 +49,9 @@ const SearchComponent = () => {
   const handleResultClick = (result) => {
     setQuery(result.title || result.name);
     setShowDropdown(false);
-    // navigate(`/${searchType}/${result.id}`);
     
     setId(result.id);
     navigate(`/id/${result.id}`);
-    // navigate('/id');
   };
   console.log(results)
 

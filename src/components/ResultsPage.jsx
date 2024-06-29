@@ -5,10 +5,9 @@ import { useStateContext } from '../context/stateContext';
 
 function ResultsPage() {
     const navigate = useNavigate();
-    const { searchType, setSearchType  } = useStateContext();
-    const { query, setQuery } = useStateContext();
-    const { id, setId } = useStateContext();
+    const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
     const [data, setData] = useState([]);
+
     const [index, setIndex] = useState(0);
     const [page, setPage] = useState(1);
 
@@ -29,11 +28,11 @@ function ResultsPage() {
     }, [index, page, searchType, query]);
 
     const changePage = () => {
-        console.log("page: ", page, "index: ", index)
         if (index === 0) {
           setIndex(index + 10);
         }else{
           setPage(page + 1);
+          setIndex(0);
         }
     };
 
@@ -48,7 +47,7 @@ function ResultsPage() {
                         <img className="movie-images"
                             src={`https://image.tmdb.org/t/p/w300${element.poster_path}` + `https://image.tmdb.org/t/p/w300${element.profile_path}` }
                             alt={element.title}
-                            onClick={() => (setId(element.id), navigate(`/id/${type}/${element.id}`))}
+                            onClick={() => (setId(element.id), navigate(`/id/${searchType}/${element.id}`))}
                         />
                           <div className="info-container">
                               <h3>{element.title}</h3>
