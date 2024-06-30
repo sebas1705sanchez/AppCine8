@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
 import '../styles/Search.css'
@@ -9,13 +9,24 @@ const SearchComponent = () => {
   // const location = useLocation();
 
   // const searchParams = new URLSearchParams(location.search);
-
-  const { searchType, setSearchType  } = useStateContext();
-  const { query, setQuery } = useStateContext();
-  const { id, setId } = useStateContext();
+  const { type, search } = useParams();
 
   const [results, setResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  
+  const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
+
+  useEffect(() => {
+    // Set searchType only if type is defined
+    if (type) {
+      setSearchType(type);
+    }
+  }, [type]);
+
+  useEffect(() => {
+    setQuery(search); // Assuming 'search' contains the ID value
+  }, [search]);
+
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -41,20 +52,22 @@ const SearchComponent = () => {
 
 
     setShowDropdown(false);
-    navigate(`/search/${query}`);
+    navigate(`/search/${searchType}/${query}`);
 
 
   };
 
   const handleResultClick = (result) => {
+    console.log("searchType", searchType)
     setQuery(result.title || result.name);
     setShowDropdown(false);
     
     setId(result.id);
-    navigate(`/id/${result.id}`);
+    navigate(`/${searchType}/${result.id}`);
   };
-  console.log(results)
-
+  console.log(results);
+  console.log(query);
+  console.log(searchType);
   return (
     <div className="search-container">
         <form onSubmit={handleSearch}>

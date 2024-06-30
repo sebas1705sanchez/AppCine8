@@ -1,24 +1,15 @@
-@import url('../style/global.css');
-/*  Para llamar un color solo se pone por ejemplo  background-color: var(--color-fondo);
-  --color-titulo : #5FD3ED;
-  --color-background: #252634;
-  --color-details: #616489;
-  --color-text: #FFFFFF;
-  --color-text-2: #B9B7B7; 
-*/
-
 .details-container {
     /* display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr; */
+    display: flex;
+    flex:1,1;
     align-content: center;
     justify-content: center;
     box-shadow: 0 0 10px #0000 ;
     border-radius: 10px;
-    margin-top: 2%;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 15%;
+    margin: 10%;
+    padding: 20px;
     background-color:hwb(200 27% 72% / 0.2);
     color: #FFFFFF;
 }
@@ -27,45 +18,27 @@
     width: 20%;
     height: auto;
     border-radius: 10px;
-    margin: 5%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
     border-radius: 5%;
 }
 
-.details-container h1{
+
+
+.details-container h3{
     color: var(--color-titulo);
-    font-size: 3em;
 }
-
-.ImgInformation{
-    display:flex;
-    align-content: center;
-    justify-content: center;
-    border:2px #FFFFFF;
-    gap:5px;
-
-    
-}
-
-.details-container p {
-    font-size:1.5em; ;
-    align-content: center;
-    justify-content: center;
-    padding: 4%;
-}
-
-
 
 .genres {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     align-content: center;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 0;
+    grid-template-columns: 1fr  ;
+    gap: 5px;
+    margin: 5%;
 }
 
 .genres h3 {
     color: var(--color-titulo);
-    font-size: 3em;
 }

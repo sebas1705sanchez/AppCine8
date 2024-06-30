@@ -19,8 +19,8 @@ function App() {
     <StateContext>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/search/:searchType/:query" element={<Details />} />
-          <Route path="/:searchType/:id*" element={<DetailsId />} />
+          <Route path="/search/:type/:search" element={<Details />} />
+          <Route path="/:search/:ID" element={<DetailsId />} />
         </Routes>
     </StateContext>
   );
