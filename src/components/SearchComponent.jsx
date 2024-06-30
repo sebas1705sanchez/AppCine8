@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
-import '../styles/Search.css'
+import '../style/search.css'
 
 const SearchComponent = () => {
   const navigate = useNavigate();
@@ -72,7 +72,6 @@ const SearchComponent = () => {
             onChange={(e) => (setQuery(e.target.value), setShowDropdown(true))} 
             placeholder="Buscar..."
           />
-          <button className='submit-button' type="submit">Buscar</button>
         </div>
         </form>
 
@@ -80,7 +79,7 @@ const SearchComponent = () => {
           <ul className="search-dropdown">
             {results.map(result => (
               <li key={result.id} onClick={() => handleResultClick(result)}>
-                  <img className="a"
+                  <img className="search-dropdown-image"
                     src={`https://image.tmdb.org/t/p/w200${result.poster_path}` + `https://image.tmdb.org/t/p/w200${result.profile_path}` }
                     alt={result.title}
                   />                {result.title || result.name}
@@ -91,7 +90,7 @@ const SearchComponent = () => {
             ))}
           </ul>
         )}
-       </div>
+      </div>
   );
 };
 

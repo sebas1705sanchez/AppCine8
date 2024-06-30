@@ -48,7 +48,7 @@ const TrendingTVPreview = () => {
   return (
     <div id="trendingTvPreview">
       <div className="trendingPreview-container">
-        <h2>Trending TV Shows Today</h2>
+        <h2 className='trending-movies-text'>Trending TV Shows Today</h2>
         <div className="trendingPreview-movieList">
           {tvShows1.map((tvShow) => (
             <div key={tvShow.id} className="movie-container">

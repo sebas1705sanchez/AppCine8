@@ -59,7 +59,7 @@ const TrendingMoviesPreview = (props) => {
   return (
     <div id="trendingPreview">
       <div className="trendingPreview-container">
-        <h2 >Trending Movies Today</h2>
+        <h2 className='trending-movies-text'>Trending Movies Today</h2>
         <div className="trendingPreview-movieList">
           {movies1.map((movie) => (
             <div key={movie.id} className="movie-container">
