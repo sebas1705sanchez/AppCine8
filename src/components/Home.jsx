@@ -3,7 +3,7 @@ import TrendingMoviesPreview from './TrendingMoviesPreview'
 import TrendingTVPreview from './TrendingTVPreview'
 import TrendingPeoplePreview from './TrendingPeoplePreview'
 
-import '../css/Home.css'
+import '../style/sectionCard.css'
 
 function Home() {
 
