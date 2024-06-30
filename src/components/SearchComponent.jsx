@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
-import '../styles/Search.css'
+import '../style/Search.css';
 
 const SearchComponent = () => {
   const navigate = useNavigate();
