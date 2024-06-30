@@ -8,9 +8,11 @@
 */
 
 
-#movie-container p {
-  color: #ffffff;
+#trendingTvPreview{
+    width: 80%;
+    height: 20%;
+    overflow: unset;
+    border: 1px, #000;
 }
-
 
 

@@ -30,6 +30,10 @@
   padding: 10px;
 }
 
+.movie-container p {
+  color: var(--color-text-2);
+}
+
 .movie-img {
   width: 100%;
   border-radius: 8px;
