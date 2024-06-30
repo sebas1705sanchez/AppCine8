@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useStateContext } from '../context/stateContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
 
@@ -15,10 +15,7 @@ const TrendingMoviesPreview = (props) => {
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
 
-  const { searchType, setSearchType  } = useStateContext();
-  const { query, setQuery } = useStateContext();
-  const { id, setId } = useStateContext();
-
+  const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -35,6 +32,7 @@ const TrendingMoviesPreview = (props) => {
     fetchMovies();
   }, [index, page])
 
+  // Funcion para mostrar los 10 resultados siguientes
   const nextPage = () => {
     if (index === 0) {
       setIndex(index + 10);
@@ -44,6 +42,7 @@ const TrendingMoviesPreview = (props) => {
     }
   };
 
+  // Funcion para mostrar los 10 resultados anteriores
   const previousPage = () => {
     if (page === 1 && index === 0) {
       return;
@@ -90,9 +89,8 @@ const TrendingMoviesPreview = (props) => {
             ))}
           </div>
       </div>
-      <button className="" onClick={nextPage}>next</button>
-      <button className="" onClick={previousPage}>previous</button>
-
+      <button className="nextPage" onClick={nextPage}>next</button>
+      <button className="previousPage" onClick={previousPage}>previous</button>
     </div>
   );
 };
