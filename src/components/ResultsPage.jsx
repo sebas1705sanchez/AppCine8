@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useStateContext } from "../context/stateContext";
 import axios from "axios";
+import "../style/resultspage.css";
 
 const constant_genres = [
   { id: 28, name: "Action" },
@@ -123,7 +124,7 @@ function ResultsPage() {
   const newData = data.slice(index, index + 10);
   console.log(newData)
   return (
-    <div className="">
+    <div className="container">
       {/* Selection para seleccionar el genero */}
       Seleccione el genero:
       <select onClick={handleSelect}>
@@ -148,7 +149,7 @@ function ResultsPage() {
           );
         })}
       </div>
-      <div className="Container">
+      <div className="container-carrusel">
         <div className="Movie">
           {newData.map((element) => (
             <div key={element.id} className="">
@@ -160,7 +161,7 @@ function ResultsPage() {
                 }
                 alt={element.title}
                 onClick={() => (
-                  setId(element.id), navigate(`/${searchType}/${element.id}`)
+                  setId(element.id), navigate(`/${searchType}/${element.id}/${element.title || element.name}`)
                 )}
               />
               <div className="info-container">
@@ -172,12 +173,14 @@ function ResultsPage() {
           ))}
         </div>
       </div>
-      <button className="nextPage" onClick={nextPage}>
-        next
-      </button>
-      <button className="previousPage" onClick={previousPage}>
-        previous
-      </button>
+      <div className="next-previous-container">
+        <button className="previous-page" onClick={previousPage}>
+          Previous
+        </button>
+        <button className="next-page" onClick={nextPage}>
+          Next
+        </button>
+      </div>
     </div>
   );
 }

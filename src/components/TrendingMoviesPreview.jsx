@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useStateContext } from '../context/stateContext';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
+import '../style/button.css';
+import '../style/sectionCard.css';
 
 const API_KEY = 'c84b15de02b182bd760ca972c743c53f'; // Clave de API de TMDb
 
@@ -15,7 +16,7 @@ const TrendingMoviesPreview = (props) => {
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
 
-  const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
+  const { searchType, setSearchType, id, setId } = useStateContext();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -58,7 +59,7 @@ const TrendingMoviesPreview = (props) => {
   return (
     <div id="trendingPreview">
       <div className="trendingPreview-container">
-        <h2 >Trending Movies Today</h2>
+      <h2 className='trending-movies-text'>Trending Movies Today</h2>
         <div className="trendingPreview-movieList">
           {movies1.map((movie) => (
             <div key={movie.id} className="movie-container">
@@ -66,7 +67,7 @@ const TrendingMoviesPreview = (props) => {
                 className="movie-img"
                 src={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
                 alt={movie.title}
-                onClick={() => (setId(movie.id), setSearchType('movie'), navigate(`/movies/${movie.id}`))}
+                onClick={() => (setId(movie.id), setSearchType('movie'), navigate(`/movies/${movie.id}/${movie.title}`))}
               />
               <p>{movie.title}</p>
               <p>{movie.vote_average}</p>
@@ -81,7 +82,7 @@ const TrendingMoviesPreview = (props) => {
                   className="movie-img"
                   src={`https://image.tmdb.org/t/p/w300${movie.backdrop_path}`}
                   alt={movie.title}
-                  onClick={() => (setId(movie.id), setSearchType('movie'), navigate(`/movies/${movie.id}`))}
+                  onClick={() => (setId(movie.id), setSearchType('movie'), navigate(`/movies/${movie.id}/${movie.title}`))}
                 />
                 <p>{movie.title}</p>
                 <p>{movie.vote_average}</p>
@@ -89,8 +90,10 @@ const TrendingMoviesPreview = (props) => {
             ))}
           </div>
       </div>
-      <button className="nextPage" onClick={nextPage}>next</button>
-      <button className="previousPage" onClick={previousPage}>previous</button>
+      <div className='next-previous-container'>  
+        <button className="previous-page" onClick={previousPage}>Previous</button>
+        <button className="next-page" onClick={nextPage}>Next</button>
+      </div>  
     </div>
   );
 };
