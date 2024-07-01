@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
-import '../styles/Search.css'
+import '../style/Search.css';
+import { CiHome } from "react-icons/ci";
 
 const SearchComponent = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const SearchComponent = () => {
 
   const [results, setResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  
+
   const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
 
   useEffect(() => {
@@ -56,16 +57,16 @@ const SearchComponent = () => {
   };
 
   const handleResultClick = (result) => {
-    console.log("searchType", searchType)
     setQuery(result.title || result.name);
     setShowDropdown(false);
     
     setId(result.id);
-    navigate(`/${searchType}/${result.id}`);
+    navigate(`/${searchType}/${result.id}/${result.title || result.name}`);
   };
 
   return (
     <div className="search-container">
+      <Link to={'/'}><CiHome onClick={() => setQuery("")} className='home-icon' /></Link>
         <form onSubmit={handleSearch}>
         <div>
           <select className='select-button' value={searchType} onChange={(e) => setSearchType(e.target.value)}>
@@ -81,7 +82,7 @@ const SearchComponent = () => {
             onChange={(e) => (setQuery(e.target.value), setShowDropdown(true))} 
             placeholder="Buscar..."
           />
-          <button className='submit-button' type="submit">Buscar</button>
+          {/* <button className='submit-button' type="submit">Buscar</button> */}
         </div>
         </form>
 
@@ -89,7 +90,7 @@ const SearchComponent = () => {
           <ul className="search-dropdown">
             {results.map(result => (
               <li key={result.id} onClick={() => handleResultClick(result)}>
-                  <img className="a"
+                  <img className="search-dropdown-image"
                     src={`https://image.tmdb.org/t/p/w200${result.poster_path}` + `https://image.tmdb.org/t/p/w200${result.profile_path}` }
                     alt={result.title}
                   />                {result.title || result.name}

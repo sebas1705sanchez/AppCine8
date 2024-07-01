@@ -4,7 +4,7 @@ import SearchComponent from "./SearchComponent";
 import { useStateContext } from '../context/stateContext';
 import '../style/details.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
+import '../style/sectionCard.css';
 
 function Details() {
   const navigate = useNavigate();
@@ -100,7 +100,6 @@ function Details() {
   };
 
   return (
-    
     <div className="details">
       <SearchComponent />
       {information && (
@@ -158,9 +157,9 @@ function Details() {
               ))}
         </div>
         <div className='next-previous-container'>  
-        <button className="previous-page" onClick={previousPage}>Previous</button>
-        <button className="next-page" onClick={nextPage}>Next</button>
-      </div>     
+          <button className="previous-page" onClick={previousPage}>Previous</button>
+          <button className="next-page" onClick={nextPage}>Next</button>
+        </div>     
       </div>
 
     </div>

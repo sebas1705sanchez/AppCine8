@@ -3,13 +3,14 @@ import axios from 'axios';
 import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
 import { useStateContext } from '../context/stateContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../style/button.css';
 
 const API_KEY = 'c84b15de02b182bd760ca972c743c53f'; // Recuerda reemplazar 'tu_api_key' con tu clave de API de TMDb
 
 const TrendingPeoplePreview = () => {
   const navigate = useNavigate();
   const [people, setPeople] = useState([]);
-  const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
+  const { searchType, setSearchType, id, setId } = useStateContext();
 
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
@@ -61,15 +62,17 @@ const TrendingPeoplePreview = () => {
                 className="persson-img"
                 src={`https://image.tmdb.org/t/p/w300${person.profile_path}`}
                 alt={person.name}
-                onClick={() => (setId(person.id), setSearchType('person'), navigate(`/person/${person.id}`))}
+                onClick={() => (setId(person.id), setSearchType('person'), navigate(`/person/${person.id}/${person.name}`))}
               />
               <h3>{person.name}</h3>
             </div>
           ))}
         </div>
       </div>
-      <button className="nextPage" onClick={nextPage}>next</button>
-      <button className="previousPage" onClick={previousPage}>previous</button>
+      <div className='next-previous-container'>  
+        <button className="previous-page" onClick={previousPage}>Previous</button>
+        <button className="next-page" onClick={nextPage}>Next</button>
+      </div>  
     </div>
   );
 };

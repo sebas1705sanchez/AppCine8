@@ -1,0 +1,96 @@
+/* styles.css */
+@import url('../style/global.css');
+/*  Para llamar un color solo se pone por ejemplo  background-color: var(--color-fondo);
+  --color-titulo : #5FD3ED;
+  --color-background: #252634;
+  --color-details: #616489;
+  --color-text: #FFFFFF;
+  --color-text-2: #B9B7B7; 
+*/
+
+
+.container-resultPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+}
+
+.container {
+  width: 50%;
+  padding: 20px;
+}
+  
+.container-carrusel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+  
+.Movie {
+  display: contents;
+}
+
+.Movie > div {
+  background: hwb(200 27% 72% / 0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: var(--color-text);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.Movie > div:hover {
+  transform: scale(1.05);
+}
+
+.movie-images {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.info-container {
+  padding: 10px;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.pagination-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.nextPage, .previousPage {
+  background-color: var(--color-titel);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nextPage:hover, .previousPage:hover {
+  background-color: var(--color-titel);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container-carrusel {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .container-carrusel {
+    grid-template-columns: 1fr;
+  }
+}

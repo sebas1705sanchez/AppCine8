@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useStateContext } from '../context/stateContext';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import '../style/sectionCard.css';  // Asegúrate de importar el archivo CSS
+import '../style/button.css';
+import '../style/sectionCard.css';
 
 const API_KEY = 'c84b15de02b182bd760ca972c743c53f'; // Recuerda reemplazar 'tu_api_key' con tu clave de API de TMDb
 
@@ -13,7 +14,7 @@ const TrendingTVPreview = () => {
   const navigate = useNavigate();
   const [tvShows1, setTvShows1] = useState([]); 
   const [tvShows2, setTvShows2] = useState([]); /* Valor y la fomra de actualizar el valor con el useEstate */
-  const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
+  const { searchType, setSearchType, id, setId } = useStateContext();
 
   const [index, setIndex] = useState(0);
   const [page, setPage] = useState(1);
@@ -60,7 +61,7 @@ const TrendingTVPreview = () => {
   return (
     <div id="trendingTvPreview">
       <div className="trendingPreview-container">
-        <h2>Trending TV Shows Today</h2>
+        <h2 className='trending-movies-text'>Trending TV Shows Today</h2>
         <div className="trendingPreview-movieList">
           {tvShows1.map((tvShow) => (
             <div key={tvShow.id} className="movie-container">
@@ -68,10 +69,10 @@ const TrendingTVPreview = () => {
                 className="movie-img"
                 src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
                 alt={tvShow.name}
-                onClick={() => (setId(tvShow.id), setSearchType('tv'), navigate(`/tvShow/${tvShow.id}`))}
+                onClick={() => (setId(tvShow.id), setSearchType('tv'), navigate(`/tvShow/${tvShow.id}/${tvShow.name}`))}
               />
-              <p>{tvShow.name}</p>{/* Nombre de la pelicula */}
-              <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
+              <p>{tvShow.name}</p>
+              <p>{tvShow.vote_average}</p>
             </div>
           ))}
         </div>
@@ -83,7 +84,7 @@ const TrendingTVPreview = () => {
                 className="movie-img"
                 src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
                 alt={tvShow.name}
-                onClick={() => (setId(tvShow.id), setSearchType('tv'), navigate(`/tvShow/${tvShow.id}`))}
+                onClick={() => (setId(tvShow.id), setSearchType('tv'), navigate(`/tvShow/${tvShow.id}/${tvShow.name}`))}
               />
               <p>{tvShow.name}</p>{/* Nombre de la pelicula */}
               <p>{tvShow.vote_average}</p>{/* Fecha de estreno */}
@@ -91,8 +92,10 @@ const TrendingTVPreview = () => {
           ))}
         </div>
       </div>    
-      <button className="nextPage" onClick={nextPage}>next</button>
-      <button className="previousPage" onClick={previousPage}>previous</button>
+      <div className='next-previous-container'>  
+        <button className="previous-page" onClick={previousPage}>Previous</button>
+        <button className="next-page" onClick={nextPage}>Next</button>
+      </div>  
     </div>
   );
 
