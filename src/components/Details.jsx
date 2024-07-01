@@ -120,14 +120,14 @@ function Details() {
           
           {searchType === "person" && (
             <div>
-              <h3>Detalles:</h3>
+              <h2>Detalles</h2>
               {information.biography ? <p><strong>Biografía:</strong> {information.biography}</p> : ""}
               {information.birthday ? <p><strong>Fecha de nacimiento:</strong> {information.birthday}</p> : ""}
               {information.deathday ? <p><strong>Fecha de muerte:</strong> {information.deathday}</p> : ""}
               {
                 information.also_known_as ? (
                   <div>
-                    <h3>Ver más Personas</h3>
+                    <h2>Ver más Personas</h2>
                     {information.also_known_as.map((element) => (
                       <p>{element}</p>
                     ))}
@@ -141,7 +141,8 @@ function Details() {
           )}
         </div>
       )}
-      <div>
+      <div className='movies-related'>
+        <h1>Peliculas relacionadas</h1>
         <div className="trendingPreview-movieList">
               {recomendations.map((recomendation) => (
                 <div key={recomendation.id} className="movie-container">

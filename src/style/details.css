@@ -18,7 +18,7 @@
   margin-top: 2%;
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 15%;
+  margin-bottom: 2%;
   background-color: hwb(200 27% 72% / 0.2);
   color: #ffffff;
 }
@@ -67,4 +67,20 @@
 .genres h3 {
 color: var(--color-titulo);
 font-size: 3em;
+}
+
+.movies-related {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 0;
+}
+
+.movies-related h1 {
+  color: var(--color-titulo);
+  font-size: 2em;
 }

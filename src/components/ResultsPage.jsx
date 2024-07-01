@@ -124,64 +124,68 @@ function ResultsPage() {
   const newData = data.slice(index, index + 10);
   console.log(newData)
   return (
-    <div className="container">
-      {/* Selection para seleccionar el genero */}
-      Seleccione el genero:
-      <select onClick={handleSelect}>
-        {constant_genres.map((element) => (
-          <option key={element.id} value={element.id}>
-            {element.name}
-          </option>
-        ))}
-      </select>
-      <span>Generos seleccionados: </span>
-      {/* // imprimir genero seleccionado, no por numero si no por nombre */}
-      <div>
-        {genre.split(",").map((element) => {
-          if (element === "") return;
-          return (
-            <p key={element}>
-              {
-                constant_genres.find((genre) => genre.id === parseInt(element))
-                  .name
-              }
-            </p>
-          );
-        })}
-      </div>
-      <div className="container-carrusel">
-        <div className="Movie">
-          {newData.map((element) => (
-            <div key={element.id} className="">
-              <img
-                className="movie-images"
-                src={
-                  `https://image.tmdb.org/t/p/w300${element.poster_path}` +
-                  `https://image.tmdb.org/t/p/w300${element.profile_path}`
-                }
-                alt={element.title}
-                onClick={() => (
-                  setId(element.id), navigate(`/${searchType}/${element.id}/${element.title || element.name}`)
-                )}
-              />
-              <div className="info-container">
-                <h3>{element.title || element.name}</h3>
-                <p>{element.release_date || element.first_air_date}</p>
-              </div>
-              <p className="title">{element.title}</p>
-            </div>
+    <>
+      <div className='select-genders'>
+        {/* Selection para seleccionar el genero */}
+        <h2>Seleccione el genero</h2>
+        <select onClick={handleSelect}>
+          {constant_genres.map((element) => (
+            <option key={element.id} value={element.id}>
+              {element.name}
+            </option>
           ))}
+        </select>
+        <span> Generos seleccionados: </span>
+        {/* // imprimir genero seleccionado, no por numero si no por nombre */}
+        <div>
+          {genre.split(",").map((element) => {
+            if (element === "") return;
+            return (
+              <p key={element}>
+                {
+                  constant_genres.find((genre) => genre.id === parseInt(element))
+                    .name
+                }
+              </p>
+            );
+          })}
         </div>
       </div>
-      <div className="next-previous-container">
-        <button className="previous-page" onClick={previousPage}>
-          Previous
-        </button>
-        <button className="next-page" onClick={nextPage}>
-          Next
-        </button>
+      <div className="container">
+        <div className="container-carrusel">
+          <div className="Movie">
+            {newData.map((element) => (
+              <div key={element.id} className="">
+                <img
+                  className="movie-images"
+                  src={
+                    `https://image.tmdb.org/t/p/w300${element.poster_path}` +
+                    `https://image.tmdb.org/t/p/w300${element.profile_path}`
+                  }
+                  alt={element.title}
+                  onClick={() => (
+                    setId(element.id), navigate(`/${searchType}/${element.id}/${element.title || element.name}`)
+                  )}
+                />
+                <div className="info-container">
+                  <h3>{element.title || element.name}</h3>
+                  <p>{element.release_date || element.first_air_date}</p>
+                </div>
+                <p className="title">{element.title}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="next-previous-container">
+          <button className="previous-page" onClick={previousPage}>
+            Previous
+          </button>
+          <button className="next-page" onClick={nextPage}>
+            Next
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
   
