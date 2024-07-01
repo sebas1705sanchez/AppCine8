@@ -1,11 +1,11 @@
-# React + Vite
+# Cinema App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto realizado en react, estructurado por 3 vistas, home, search y details.
 
-Currently, two official plugins are available:
+Se toma la desición de crear un diseño minimalista, amigable para cualquier usuario, para su facil navego entre vistas.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Deploy: cinema-app-omega.vercel.app
 
-Deploy: https://aplicacion-cine-8-esbzj0k2j-agbr121s-projects.vercel.app/
+Figma: https://www.figma.com/design/dTLEYIdt5bdZm2oa9Ob6OE/Movie-web?node-id=0-1&t=QzIXU4XQwO883UBu-0
+
 
