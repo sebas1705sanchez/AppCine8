@@ -4,6 +4,7 @@ import SearchComponent from "./SearchComponent";
 import { useStateContext } from '../context/stateContext';
 import '../style/details.css';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
 
 function Details() {
   const navigate = useNavigate();
@@ -142,22 +143,24 @@ function Details() {
         </div>
       )}
       <div>
-        <div className="trendingPreview-recomendationList">
+        <div className="trendingPreview-movieList">
               {recomendations.map((recomendation) => (
-                <div key={recomendation.id} className="recomendation-container">
+                <div key={recomendation.id} className="movie-container">
                   <img
-                    className="recomendation-img"
+                    className="movie-img"
                     src={`https://image.tmdb.org/t/p/w300${recomendation.backdrop_path}`}
                     alt={recomendation.title}
-                    onClick={() => (setId(recomendation.id), setSearchType(searchType), navigate(`/movies/${recomendation.id}`))}
+                    onClick={() => (setId(recomendation.id), setSearchType(searchType), navigate(`/${searchType}/${recomendation.id}/${recomendation.title || recomendation.name}`))}
                   />
                   <p>{recomendation.title}</p>
                   <p>{recomendation.vote_average}</p>
                 </div>
               ))}
         </div>
-        <button className="nextPage" onClick={nextPage}>next</button>
-        <button className="previousPage" onClick={previousPage}>previous</button>
+        <div className='next-previous-container'>  
+        <button className="previous-page" onClick={previousPage}>Previous</button>
+        <button className="next-page" onClick={nextPage}>Next</button>
+      </div>     
       </div>
 
     </div>
