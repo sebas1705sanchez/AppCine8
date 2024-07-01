@@ -9,4 +9,3 @@ Currently, two official plugins are available:
 
 Deploy: https://aplicacion-cine-8-esbzj0k2j-agbr121s-projects.vercel.app/
 
-https://sebas1705sanchez.github.io/AppCine8/
