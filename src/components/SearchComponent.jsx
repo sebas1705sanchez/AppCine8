@@ -1,22 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
 import '../styles/Search.css'
 
 const SearchComponent = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
 
-  // const [searchType, setSearchType] = useState(searchParams.get('type') || 'movie');
-  // const [query, setQuery] = useState(searchParams.get('query') || '');
-  const { searchType, setSearchType  } = useStateContext();
-  const { query, setQuery } = useStateContext();
-  const { id, setId } = useStateContext();
+  const { type, search } = useParams();
 
   const [results, setResults] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  
+  const { searchType, setSearchType, query, setQuery, id, setId } = useStateContext();
+
+  useEffect(() => {
+    // Set searchType only if type is defined
+    if (type) {
+      setSearchType(type);
+    }
+  }, [type]);
+
+  useEffect(() => {
+    setQuery(search);
+  }, [search]);
+
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -38,28 +46,23 @@ const SearchComponent = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    //if (query.trim() === '') return;
-    // const params = new URLSearchParams();
-    // params.append('type', searchType);
-    // params.append('query', query);
+    if (query.trim() === '') return;
+
 
     setShowDropdown(false);
-    // navigate('/search');
-    navigate(`/search/${query}`);
+    navigate(`/search/${searchType}/${query}`);
 
 
   };
 
   const handleResultClick = (result) => {
+    console.log("searchType", searchType)
     setQuery(result.title || result.name);
     setShowDropdown(false);
-    // navigate(`/${searchType}/${result.id}`);
     
     setId(result.id);
-    navigate(`/id/${result.id}`);
-    // navigate('/id');
+    navigate(`/${searchType}/${result.id}`);
   };
-  console.log(results)
 
   return (
     <div className="search-container">
