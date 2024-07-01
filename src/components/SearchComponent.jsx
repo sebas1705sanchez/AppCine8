@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
 import '../styles/Search.css'
 
 const SearchComponent = () => {
   const navigate = useNavigate();
-  // const location = useLocation();
 
-  // const searchParams = new URLSearchParams(location.search);
   const { type, search } = useParams();
 
   const [results, setResults] = useState([]);
@@ -24,7 +22,7 @@ const SearchComponent = () => {
   }, [type]);
 
   useEffect(() => {
-    setQuery(search); // Assuming 'search' contains the ID value
+    setQuery(search);
   }, [search]);
 
 
@@ -65,9 +63,7 @@ const SearchComponent = () => {
     setId(result.id);
     navigate(`/${searchType}/${result.id}`);
   };
-  console.log(results);
-  console.log(query);
-  console.log(searchType);
+
   return (
     <div className="search-container">
         <form onSubmit={handleSearch}>

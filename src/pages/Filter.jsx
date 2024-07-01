@@ -4,10 +4,7 @@ import ResultsPage from "../components/ResultsPage";
 import SearchComponent from "../components/SearchComponent";
 import { useStateContext } from '../context/stateContext';
 
-function Details() {
-
-  const { searchType, setSearchType  } = useStateContext();
-  const { query, setQuery  } = useStateContext();
+function Filter() {
 
   return(
     <div>
@@ -19,4 +16,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default Filter;

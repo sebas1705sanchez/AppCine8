@@ -63,6 +63,7 @@ const TrendingPeoplePreview = () => {
                 alt={person.name}
                 onClick={() => (setId(person.id), setSearchType('person'), navigate(`/person/${person.id}`))}
               />
+              <h3>{person.name}</h3>
             </div>
           ))}
         </div>
