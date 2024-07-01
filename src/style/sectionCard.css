@@ -28,6 +28,10 @@
   overflow: hidden;
 }
 
+.trending-movies-text {
+  margin-bottom: 20px;
+}
+
 .movie-container {
   margin: 5px;
   border-radius: 10px;
@@ -37,6 +41,7 @@
   width: 200px; /* Ajusta este valor según tus necesidades */
   padding: 10px;
   text-align: center;
+  transition: ease-in-out 0.1s;
 }
 
 .movie-img {
@@ -107,6 +112,7 @@ h2 {
 
 .movie-container:hover {
   cursor: pointer;
-  background-color: var(--color-titulo);
+  transform: scale(1.03);
+  transition: ease-in 0.2s;
   color: #1A1A1A;
 }
