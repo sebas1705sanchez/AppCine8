@@ -3,9 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import SearchComponent from './components/SearchComponent';
 import DetailsId from './components/details';
 import Home from './components/Home';
-
-
-import Details from './pages/Filter';
+import Details from './components/Filter';
 import { StateContext } from './context/stateContext';
 
 //import {

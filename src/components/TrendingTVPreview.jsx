@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useStateContext } from '../context/stateContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../style/button.css';
 
 import '../style/sectionCard.css';  // Asegúrate de importar el archivo CSS
 
@@ -90,9 +91,11 @@ const TrendingTVPreview = () => {
             </div>
           ))}
         </div>
-      </div>    
-      <button className="nextPage" onClick={nextPage}>next</button>
-      <button className="previousPage" onClick={previousPage}>previous</button>
+      </div>
+      <div className='next-previous-container'>  
+        <button className="previous-page" onClick={previousPage}>Previous</button>
+        <button className="next-page" onClick={nextPage}>next</button>
+      </div>  
     </div>
   );
 

@@ -3,6 +3,7 @@ import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { fetchSearchResults } from '../service/TmdbApi';
 import { useStateContext } from '../context/stateContext';
 import '../style/Search.css';
+import { CiHome } from "react-icons/ci";
 
 const SearchComponent = () => {
   const navigate = useNavigate();
@@ -70,6 +71,7 @@ const SearchComponent = () => {
   console.log(searchType);
   return (
     <div className="search-container">
+      <CiHome className='home-icon' />
         <form onSubmit={handleSearch}>
         <div>
           <select className='select-button' value={searchType} onChange={(e) => setSearchType(e.target.value)}>

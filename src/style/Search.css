@@ -1,8 +1,22 @@
+.home-icon {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: ease-in-out 0.2s;
+}
+
+.home-icon:hover {
+  transform: scale(1.1);
+  transition: ease-in-out 0.2s;
+}
+
 .search-container {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 5rem;
   background-color: rgba(18, 18, 18, 0.48)
 }
 
@@ -17,8 +31,7 @@
 }
 
 .input-search {
-  width: 800px;
-  width: 50vw;
+  width: 49vw;
   padding: 8px;
   font-size: 16px;
 }

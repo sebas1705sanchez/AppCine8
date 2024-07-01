@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../style/sectionCard.css'; // Asegúrate de importar el archivo CSS
 import { useStateContext } from '../context/stateContext';
 import { useNavigate, useParams } from 'react-router-dom';
+import '../style/button.css';
 
 const API_KEY = 'c84b15de02b182bd760ca972c743c53f'; // Recuerda reemplazar 'tu_api_key' con tu clave de API de TMDb
 
@@ -67,8 +68,10 @@ const TrendingPeoplePreview = () => {
           ))}
         </div>
       </div>
-      <button className="nextPage" onClick={nextPage}>next</button>
-      <button className="previousPage" onClick={previousPage}>previous</button>
+      <div className='next-previous-container'>  
+        <button className="previous-page" onClick={previousPage}>Previous</button>
+        <button className="next-page" onClick={nextPage}>Next</button>
+      </div>  
     </div>
   );
 };
